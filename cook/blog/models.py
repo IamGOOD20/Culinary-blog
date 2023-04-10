@@ -32,6 +32,9 @@ class Post(models.Model):
     tags = models.ManyToManyField(Tag, related_name='post')
     create_at = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.title
+
 class Resipe(models.Model):
     name = models.CharField(max_length=100)
     serves = models.CharField(max_length=50)
@@ -46,6 +49,8 @@ class Resipe(models.Model):
         null=True,
         blank=True
     )
+
+
 
 class Comment(models.Model):
     name = models.CharField(max_length=50)
