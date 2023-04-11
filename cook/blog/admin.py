@@ -2,15 +2,19 @@ from django.contrib import admin
 from . import models
 from mptt.admin import MPTTModelAdmin
 
-
-# Register your models here.
-
 # name: Jack
 # mail: Jack@gmail.com
 # pas: J123123123
+
+
+class RecipeInLine(admin.StackedInline):
+    model = models.Resipe
+    extra = 1
+
 @admin.register(models.Post)
 class PostAdmin(admin.ModelAdmin):
     list_display = ['title', 'author', 'category', 'create_at', 'id']
+    inlines = [RecipeInLine]
 
 @admin.register(models.Resipe)
 class RecipeAdmin(admin.ModelAdmin):
